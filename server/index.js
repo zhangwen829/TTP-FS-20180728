@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 8080;
 module.exports = app;
 
 const createApp = () => {
+  app.use('/api', require('./api'));
+
   app.use(express.static(path.join(__dirname, '..', 'public')));
 
   app.use('*', (req, res) => {
@@ -25,7 +27,6 @@ async function bootApp() {
 
 if (require.main === module) {
   bootApp();
-}
-else {
+} else {
   createApp();
 }
