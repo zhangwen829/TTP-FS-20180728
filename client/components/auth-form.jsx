@@ -7,17 +7,17 @@ const AuthForm = props => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <div className="form-parent">
+    <div className="form-container">
       <form onSubmit={handleSubmit} name={name} className="form">
         <div>
           <label htmlFor="email">
-            <small>Email:   </small>
+            <small>Email</small>
           </label>
           <input name="email" type="text" className="input" />
         </div>
         <div>
           <label htmlFor="password">
-            <small>Password:</small>
+            <small>Password</small>
           </label>
           <input name="password" type="password" className="input" />
         </div>
@@ -26,7 +26,7 @@ const AuthForm = props => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      {name === 'login' ? <a href="/signup" >No Account? Let's Sign Up First!</a> : <a href="/login" >Registered User? Let's Log In!</a>}
+      {name === 'login' ? <a href="/signup" >Sign Up</a> : <a href="/login" > Log In</a>}
     </div>
   );
 };
