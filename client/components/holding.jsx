@@ -4,29 +4,31 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchHoldingsWithPriceByUserId } from '../stores/holding';
+import { fetchHoldingsWithPriceByUserId } from '../store/holding';
 
 class Holding extends React.Component {
   componentDidMount() {
-    this.props.fetchHoldingsWithPriceByUserId('372b28a0-f6bc-11e8-b401-ef551a180680');
+    this.props.fetchHoldingsWithPriceByUserId('fc946c40-f72b-11e8-bd2e-1f96f6ec4941');
   }
   render() {
     const { holdingsWithPrice } = this.props;
-    const holdingsWithPrice2 = holdingsWithPrice ? holdingsWithPrice : [];
-    console.log(holdingsWithPrice2);
+    let portfolioTotal = 0;
+    holdingsWithPrice.forEach(holding => { portfolioTotal += holding.shares * holding.price; });
     return (
       <div>
-        <h3>Portfolio ($5943.34)</h3>
-        holdingsWithPrice2.forEach(holding => (
-        <List>
-          <ListItem>
-            <ListItemText>{holding.symbol}</ListItemText>
-            <ListItemText>{holding.shares} shares</ListItemText>
-            <ListItemText>{holding.price}</ListItemText>
-          </ListItem>
-        </List>
-        <Divider />
-        ))
+        <h3>Portfolio: $ {Number(portfolioTotal).toFixed(2)}</h3>
+        {holdingsWithPrice.map(holding => (
+          <div key={holding.symbol}>
+            <List>
+              <ListItem>
+                <ListItemText >{holding.symbol}</ListItemText >
+                <ListItemText >{holding.shares} shares</ListItemText >
+                <ListItemText >$ {Number(holding.price).toFixed(2)}</ListItemText >
+              </ListItem>
+            </List>
+            <Divider />
+          </div>))
+        }
       </div>
     );
   }
