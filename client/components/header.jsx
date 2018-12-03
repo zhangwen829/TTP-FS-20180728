@@ -4,14 +4,16 @@ import { Link } from 'react-router-dom';
 export default class Header extends React.Component {
   render() {
     return (
-      <div>
-        <h2>Welcome, abc@gmail.com</h2>
+      <div className="header">
+        <h2 id="welcome-msg">Welcome, abc@gmail.com</h2>
         <nav>
-          <Link to='/portfolio'>portfolio</Link>
-          <Link to='/transaction'>transaction</Link>
-          <a href="#">
-            Logout
+          <div className="header-links">
+            <Link to='/portfolio'>Portfolio</Link>
+            <Link to='/transaction'>Transaction</Link>
+            <a href="#">
+              Logout
           </a>
+          </div>
         </nav>
       </div>);
   }

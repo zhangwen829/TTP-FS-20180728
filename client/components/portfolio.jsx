@@ -5,6 +5,8 @@ import Trade from './trade';
 
 export default class Portfolio extends React.Component {
   render() {
-    return (<div><Header /><Holding /><Trade /></div>);
+    return (<div><Header />
+      <div className="main portfolio-main"><Holding /><Trade /></div>
+    </div>);
   }
 }

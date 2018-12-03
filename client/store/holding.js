@@ -16,7 +16,7 @@ export const fetchHoldingsWithPriceByUserId = (userId) => async dispatch => {
   const iexInfo = iexRets.data;
 
   // TODO(zhangwen829), check if holdings's size is equal to iexInfo'size
-
+  // assume fetching data from IEX API worked as expected
   let combined = [];
   for (let i = 0; i < data.length; ++i) {
     const symbol = data[i].symbol;

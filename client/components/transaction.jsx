@@ -4,9 +4,9 @@ import Header from './header';
 export default class Trade extends React.Component {
   render() {
     return (
-      <div>
+      <div >
         <Header />
-        <div>This is transaction</div>
+        <div className="main">This is transaction</div>
       </div>);
   }
 }
