@@ -1,19 +1,52 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import AuthForm from './components/auth-form';
+import { connect } from 'react-redux';
+import { withRouter, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Login, Signup } from './components/auth-form';
 import Portfolio from './components/portfolio';
 import Transaction from './components/transaction';
+import { me } from './store/user';
 
-const App = () => {
-  return (
-    <Switch>
-      <Route path="/login" component={AuthForm} />
-      <Route path="/signup" component={AuthForm} />
-      <Route path="/portfolio" component={Portfolio} />
-      <Route path="/transaction" component={Transaction} />
-      <Route component={AuthForm} />
-    </Switch >
-  );
+class App extends React.Component {
+  componentDidMount() {
+    this.props.loadInitialData();
+  }
+
+  render() {
+    const { isLoggedIn } = this.props;
+
+    return (
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        {isLoggedIn && (
+          <Switch>
+            <Route path="/portfolio" component={Portfolio} />
+            <Route path="/transaction" component={Transaction} />
+          </Switch >
+        )}
+
+        }
+        <Route component={Login} />
+      </Switch >
+    );
+  }
 }
+const mapState = state => {
+  return {
+    isLoggedIn: !!state.user.id
+  };
+};
 
-export default App;
+const mapDispatch = dispatch => ({
+  loadInitialData: () => dispatch(me())
+});
+
+
+App.propTypes = {
+  loadInitialData: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
+};
+
+
+export default withRouter((connect(mapState, mapDispatch))(App));

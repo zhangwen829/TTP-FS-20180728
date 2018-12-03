@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 8080;
 module.exports = app;
 
 const createApp = () => {
+  app.use('/auth', require('./auth'));
   app.use('/api', require('./api'));
 
   app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -15,9 +16,7 @@ const createApp = () => {
 };
 
 const startListening = () => {
-  // start listening (and create a 'server' object representing our server)
-  const server =
-      app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`));
+  app.listen(PORT, () => console.log(`Mixing it up on port ${PORT}`));
 };
 
 async function bootApp() {

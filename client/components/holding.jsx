@@ -6,7 +6,7 @@ import { fetchHoldingsWithPriceByUserId } from '../store/holding';
 
 class Holding extends React.Component {
   componentDidMount() {
-    this.props.fetchHoldingsWithPriceByUserId('fc946c40-f72b-11e8-bd2e-1f96f6ec4941');
+    this.props.fetchHoldingsWithPriceByUserId('60c87910-f752-11e8-ad9a-e58b437b2803');
   }
   render() {
     const { holdingsWithPrice } = this.props;
