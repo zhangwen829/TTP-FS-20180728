@@ -8,7 +8,6 @@ async function seed() {
 
   const users = await Promise.all(userData.map(user => User.create(user)));
   const userId1 = users[0].id;
-  console.log('userId1: ', userId1);
   const holdings = await Promise.all(
       holdingData(userId1).map(holding => Holding.create(holding)));
 
