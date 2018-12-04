@@ -29,7 +29,8 @@ export const fetchHoldingsWithPriceByUserId = (userId) => async dispatch => {
       symbol: symbol,
       shares: data[i].shares,
       price: iexInfo[symbol].price,
-      open: iexInfo[symbol].ohlc.open.price
+      open: iexInfo[symbol].ohlc.open.price,
+      change: iexInfo[symbol].price - iexInfo[symbol].ohlc.open.price
     });
     portfolioTotal += data[i].shares * iexInfo[symbol].price;
   }

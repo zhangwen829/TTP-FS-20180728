@@ -12,11 +12,11 @@ body {
   font-size: 0.9em;
 }
 
-.main{
+.main {
   padding:10px;
 }
 
-.header{
+.header {
   background-color: skyblue;
   padding:10px;
   height: 120px;
@@ -38,12 +38,12 @@ body {
 	text-decoration: none;
 }
 
-.portfolio-main{
+.portfolio-main {
   display: flex;
   flex-direction: row;
 }
 
-.form-container{
+.form-container {
   width: 40%;
   margin: 200px auto auto auto;
   padding: 50px;
@@ -52,12 +52,12 @@ body {
   font-size: 20px;
 }
 
-.form{
+.form {
   margin: 20px;
   padding: 20px;
 }
 
-.input{
+.input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
