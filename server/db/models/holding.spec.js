@@ -16,8 +16,10 @@ describe('Holding model', () => {
         Sequelize.Utils.toDefaultValue(Sequelize.UUIDV1());
 
     beforeEach(async() => {
-      const users = await User.bulkCreate(
-          [{email: 'abc@gmail.com'}, {email: 'efg@gmail.com'}]);
+      const users = await User.bulkCreate([
+        {email: 'abc@gmail.com', password: '12345'},
+        {email: 'efg@gmail.com', password: '12345'}
+      ]);
       TEST_USER_ID_1 = users[0].id;
       TEST_USER_ID_2 = users[1].id;
       TEST_HOLDING_1 = {symbol: 'APPL', shares: 100, userId: TEST_USER_ID_1};
