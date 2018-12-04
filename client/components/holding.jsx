@@ -6,12 +6,10 @@ import { fetchHoldingsWithPriceByUserId } from '../store/holding';
 
 class Holding extends React.Component {
   componentDidMount() {
-    this.props.fetchHoldingsWithPriceByUserId('60c87910-f752-11e8-ad9a-e58b437b2803');
+    this.props.fetchHoldingsWithPriceByUserId(this.props.userId);
   }
   render() {
-    const { holdingsWithPrice } = this.props;
-    let portfolioTotal = 0;
-    holdingsWithPrice.forEach(holding => { portfolioTotal += holding.shares * holding.price; });
+    const { holdingsWithPrice, portfolioTotal } = this.props;
     return (
       <div>
         <h3>Portfolio: $ {Number(portfolioTotal).toFixed(2)}</h3>
@@ -33,7 +31,9 @@ class Holding extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+  userId: state.user.id,
   holdingsWithPrice: state.holdings.holdingsWithPrice,
+  portfolioTotal: state.holdings.portfolioTotal
 });
 
 const mapDispatchToProps = dispatch => {
