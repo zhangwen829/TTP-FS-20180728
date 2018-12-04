@@ -1,9 +1,9 @@
-## What's This Repository?
+## Introduction
 
 It's a project for NYC Tech Talent Pipeline Web Application Build.
 
 
-## Setup
+## Set Up
 
 These instructions will get you a copy of the project and run on your local machine
 
@@ -22,7 +22,7 @@ These instructions will get you a copy of the project and run on your local mach
 *Use the email "wen@email.com" and password "12345" if you want to explore the site without registeration.*
 
 
-## Running the Tests
+## Tests
 
 Unit tests have been written for the app. Run `npm test`.
 
@@ -38,7 +38,7 @@ https://ttp-zw.herokuapp.com
 *Use the email "wen@email.com" and password "12345" if you want to explore the site without registeration.*
 
 
-## Built With
+## Technologies
 
 * React
 * Express.js
