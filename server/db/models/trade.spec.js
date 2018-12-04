@@ -6,7 +6,9 @@ const User = db.model('user');
 const Holding = db.model('holding');
 
 describe('Trade model', () => {
-  beforeEach(() => { return db.sync({force: true}); });
+  beforeEach(() => {
+    return db.sync({force: true});
+  });
   describe('listTradesByUserId', () => {
     let TEST_USER_ID_1;
     let TEST_USER_ID_2;
@@ -15,7 +17,7 @@ describe('Trade model', () => {
     const NON_EXIST_USER_ID =
         Sequelize.Utils.toDefaultValue(Sequelize.UUIDV1());
 
-    beforeEach(async() => {
+    beforeEach(async () => {
       const users = await User.bulkCreate([
         {email: 'abc@gmail.com', password: '12345'},
         {email: 'efg@gmail.com', password: '12345'}
@@ -39,7 +41,7 @@ describe('Trade model', () => {
       await Trade.bulkCreate([TEST_TRADE_1, TEST_TRADE_2]);
     });
 
-    it('Returns TEST_TRADE_1 when query by TEST_USER_ID_1', async() => {
+    it('Returns TEST_TRADE_1 when query by TEST_USER_ID_1', async () => {
       const rets = await Trade.listTradesByUserId(TEST_USER_ID_1);
       expect(rets).to.be.an('array').that.to.have.lengthOf(1);
       expect(rets[0].symbol).to.be.equal(TEST_TRADE_1.symbol);
@@ -49,7 +51,7 @@ describe('Trade model', () => {
       expect(rets[0].userId).to.be.equal(TEST_TRADE_1.userId);
     });
 
-    it('Returns empty when query by NON_EXIST_USER_ID', async() => {
+    it('Returns empty when query by NON_EXIST_USER_ID', async () => {
       const rets = await Holding.listHoldingsByUserId(NON_EXIST_USER_ID);
       expect(rets).to.be.an('array').that.is.empty;
     });
@@ -58,7 +60,7 @@ describe('Trade model', () => {
     const TEST_SYMBOL = 'AAPL';
     const TEST_SHARES = 10;
     const TEST_PRICE = 170;
-    it('Buy a non existent symbol', async() => {
+    it('Buy a non existent symbol', async () => {
       const user = await User.create(
           {email: 'abc@gmail.com', password: '12345', cashAmount: 10000});
       await Trade.buy(user.id, TEST_SYMBOL, TEST_SHARES, TEST_PRICE);
@@ -78,7 +80,7 @@ describe('Trade model', () => {
       expect(holdings[0].shares).to.be.equal(TEST_SHARES);
     });
 
-    it('Buy existent symbol', async() => {
+    it('Buy existent symbol', async () => {
       const user = await User.create(
           {email: 'abc@gmail.com', password: '12345', cashAmount: 10000});
       await Holding.create({userId: user.id, symbol: TEST_SYMBOL, shares: 5});
@@ -89,6 +91,7 @@ describe('Trade model', () => {
       expect(holdings[0].shares).to.be.equal(TEST_SHARES + 5);
     });
 
-    it('Buy without enough amount', async() => {});
+    // it('Buy without enough amount', async () => {});
+    // throw exception
   });
 });

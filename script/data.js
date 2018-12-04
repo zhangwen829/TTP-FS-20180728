@@ -4,10 +4,10 @@ const userData = [
 
 function holdingData(userId1) {
   return [
-    {symbol: 'GOOG', shares: 100, userId: userId1},
-    {symbol: 'AMZN', shares: 200, userId: userId1},
-    {symbol: 'BAC', shares: 150, userId: userId1},
-    {symbol: 'MSFT', shares: 300, userId: userId1}
+    {symbol: 'GOOG', shares: 1, userId: userId1},
+    {symbol: 'BAC', shares: 5, userId: userId1},
+    {symbol: 'TGT', shares: 2, userId: userId1},
+    {symbol: 'MSFT', shares: 3, userId: userId1}
   ];
 }
 

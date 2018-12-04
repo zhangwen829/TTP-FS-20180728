@@ -19,7 +19,7 @@ export const fetchHoldingsWithPriceByUserId = (userId) => async dispatch => {
           symbols}&types=price,ohlc`);
   const iexInfo = iexRets.data;
 
-  // TODO(zhangwen829), check if holdings's size is equal to iexInfo'size
+  // TODO(zhangwen829): check if holdings's size is equal to iexInfo'size
   // assume fetching data from IEX API worked as expected
   let combined = [];
   let portfolioTotal = 0;

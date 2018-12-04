@@ -22,7 +22,7 @@ Trade.buy = function(userId, symbol, shares, price) {
           const needAmount = shares * price;
           if (cashAmount < needAmount) {
             const err = new Error('Not enough cash amount.');
-            err.httpStatusCode = 412;  // TODO(zhangwen829, use CONSTANT)
+            err.httpStatusCode = 412;  // TODO(zhangwen829): use CONSTANT
             throw err;
           }
           return user.update(
