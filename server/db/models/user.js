@@ -8,13 +8,18 @@ const User = db.define('user', {
 
   password: {
     type: Sequelize.STRING,
-    allowNull: false, get() { return () => this.getDataValue('password'); }
+    allowNull: false,
+    get() {
+      return () => this.getDataValue('password');
+    }
   },
   salt: {
     type: Sequelize.STRING,
-    get() { return () => this.getDataValue('salt'); }
+    get() {
+      return () => this.getDataValue('salt');
+    }
   },
-  cashAmount: {type: Sequelize.DOUBLE, allowNull: false, defaultValue: 5000}
+  cashBal: {type: Sequelize.DOUBLE, allowNull: false, defaultValue: 5000.00}
 });
 
 

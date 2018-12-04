@@ -1,6 +1,6 @@
-const {userData, holdingData} = require('./data');
+const {userData, holdingData, tradeData} = require('./data');
 const db = require('../server/db');
-const {User, Holding} = require('../server/db/models');
+const {User, Holding, Trade} = require('../server/db/models');
 
 async function seed() {
   await db.sync({force: true});
@@ -10,10 +10,12 @@ async function seed() {
   const userId1 = users[0].id;
   const holdings = await Promise.all(
       holdingData(userId1).map(holding => Holding.create(holding)));
+  const trades =
+      await Promise.all(tradeData(userId1).map(trade => Trade.create(trade)));
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${holdings.length} holdings`);
-
+  console.log(`seeded ${trades.length} holdings`);
   console.log(`seeded successfully`);
 }
 

@@ -18,15 +18,15 @@ Trade.buy = function(userId, symbol, shares, price) {
   return db.transaction(function(t) {
     return User.findByPk(userId, {transaction: t})
         .then(function(user) {
-          const cashAmount = user.cashAmount;
+          const cashBal = user.cashBal;
           const needAmount = shares * price;
-          if (cashAmount < needAmount) {
-            const err = new Error('Not enough cash amount.');
+          if (cashBal < needAmount) {
+            const err = new Error('Not Enough Cash');
             err.httpStatusCode = 412;  // TODO(zhangwen829): use CONSTANT
             throw err;
           }
           return user.update(
-              {cashAmount: cashAmount - needAmount}, {transaction: t});
+              {cashBal: cashBal - needAmount}, {transaction: t});
         })
         .then(function(unusedUser) {
           return Trade.create(

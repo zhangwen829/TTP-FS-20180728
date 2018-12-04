@@ -62,11 +62,11 @@ describe('Trade model', () => {
     const TEST_PRICE = 170;
     it('Buy a non existent symbol', async () => {
       const user = await User.create(
-          {email: 'abc@gmail.com', password: '12345', cashAmount: 10000});
+          {email: 'abc@gmail.com', password: '12345', cashBal: 10000});
       await Trade.buy(user.id, TEST_SYMBOL, TEST_SHARES, TEST_PRICE);
 
       const updatedUser = await User.findByPk(user.id);
-      expect(updatedUser.cashAmount).to.be.equal(10000 - 10 * 170);
+      expect(updatedUser.cashBal).to.be.equal(10000 - 10 * 170);
 
       const trades = await Trade.listTradesByUserId(user.id);
       expect(trades).to.be.an('array').that.to.have.lengthOf(1);
@@ -82,7 +82,7 @@ describe('Trade model', () => {
 
     it('Buy existent symbol', async () => {
       const user = await User.create(
-          {email: 'abc@gmail.com', password: '12345', cashAmount: 10000});
+          {email: 'abc@gmail.com', password: '12345', cashBal: 10000});
       await Holding.create({userId: user.id, symbol: TEST_SYMBOL, shares: 5});
       await Trade.buy(user.id, TEST_SYMBOL, TEST_SHARES, TEST_PRICE);
       const holdings = await Holding.listHoldingsByUserId(user.id);
@@ -91,7 +91,7 @@ describe('Trade model', () => {
       expect(holdings[0].shares).to.be.equal(TEST_SHARES + 5);
     });
 
-    // it('Buy without enough amount', async () => {});
+    // it('Buy without enough cash', async () => {});
     // throw exception
   });
 });
