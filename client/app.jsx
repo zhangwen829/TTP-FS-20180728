@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Route, Switch } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import { Login, Signup } from './components/auth-form';
 import Portfolio from './components/portfolio';
 import Transaction from './components/transaction';
@@ -25,8 +25,6 @@ class App extends React.Component {
             <Route path="/transaction" component={Transaction} />
           </Switch >
         )}
-
-        }
         <Route component={Login} />
       </Switch >
     );
