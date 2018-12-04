@@ -1,9 +1,9 @@
-### What's This Repository?
+## What's This Repository?
 
 It's a project for NYC Tech Talent Pipeline Web Application Build.
 
 
-### Getting Started
+## Getting Started
 
 These instructions will get you a copy of the project and run on your local machine
 
@@ -30,7 +30,7 @@ Unit tests have been written for the app. Run `npm test`.
 
 ## Deployment
 
-The app was deployed on [Heroku] (https://ttp-zw.herokuapp.com)
+The app was deployed on [Heroku](https://ttp-zw.herokuapp.com)
 
 *Please allow 20 seconds for server to boot*
 
@@ -40,15 +40,13 @@ The app was deployed on [Heroku] (https://ttp-zw.herokuapp.com)
 ## Built With
 
 * React
-* Redux
-* Material UI
 * Express.js
 * PostgreSQL 
 
 
 ## API Reference
-Data of stock are provided for free by [IEX] (https://iextrading.com/developer/docs/#attribution)
+Data of stock are provided by [IEX](https://iextrading.com/developer/docs/#attribution)
 
 
 ## Author
-**Wen Zhang** [GitHub](https://github.com/zhangwen829)
+**Wen Zhang**   [My GitHub](https://github.com/zhangwen829)
