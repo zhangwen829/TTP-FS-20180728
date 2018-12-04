@@ -1,5 +1,9 @@
-const userData =
-    [{email: 'wen@email.com', password: '12345', cashBal: 3527.04}];
+const userData = [{
+  email: 'wen@email.com',
+  password: '12345',
+  name: 'Wen Zhang',
+  cashBal: 3527.04
+}];
 
 function holdingData(userId1) {
   return [

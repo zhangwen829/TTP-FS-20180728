@@ -5,10 +5,15 @@ import { auth } from '../store/user';
 
 const AuthForm = props => {
   const { name, displayName, handleSubmit, error } = props;
-
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} name={name} className="form">
+        {name === 'signup' ? (<div>
+          <label htmlFor="username">
+            <small>Name</small>
+          </label>
+          <input name="username" type="text" className="input" />
+        </div>) : null}
         <div>
           <label htmlFor="email">
             <small>Email</small>
@@ -55,7 +60,8 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name;
       const email = evt.target.email.value;
       const password = evt.target.password.value;
-      dispatch(auth(email, password, formName));
+      const userName = formName === 'signup' ? evt.target.username.value : '';
+      dispatch(auth(email, password, userName, formName));
     }
   };
 };

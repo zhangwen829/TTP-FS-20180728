@@ -9,7 +9,7 @@ export const fetchHoldingsWithPriceByUserId = (userId) => async dispatch => {
   const {data} = await axios.get(`/api/holdings/user/${userId}`);
 
   if (data.length === 0) {
-    return dispatch(getHoldingsWithPrice([]));
+    return dispatch(getHoldingsWithPrice([], 0));
   }
 
   const symbols = data.map(holding => holding.symbol).join(',');

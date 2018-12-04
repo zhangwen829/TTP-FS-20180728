@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { logout } from '../store/user';
 
 const Header = (props) => {
-  const { clickLogout, userEmail } = props;
+  const { clickLogout, userName } = props;
   return (
     <div className="header">
-      <h2 id="welcome-msg">Welcome, {userEmail}</h2>
+      <h2 id="welcome-msg">Welcome, {userName}</h2>
       <nav>
         <div className="header-links">
           <Link to='/portfolio'>Portfolio</Link>
@@ -18,11 +18,11 @@ const Header = (props) => {
         </div>
       </nav>
     </div>);
-}
+};
 
 
 const mapStateToProps = (state) => ({
-  userEmail: state.user.email,
+  userName: state.user.name,
 });
 
 const mapDispatch = dispatch => ({
