@@ -24,7 +24,7 @@ Trade.buy = function(userId, symbol, shares, price) {
           const needAmount = shares * price;
           if (cashBal < needAmount) {
             const err = new Error('Not Enough Cash');
-            err.httpStatusCode = constants.STATUS_CODE_FOR_BAD_REQUEST;
+            err.status = constants.STATUS_CODE_FOR_BAD_REQUEST;
             throw err;
           }
           return user.update({cashBal: cashBal - needAmount}, {transaction: t});
