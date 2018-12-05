@@ -26,7 +26,7 @@ class Holding extends React.Component {
     const { classes, holdingsWithPrice, portfolioTotal } = this.props;
     return (
       <div className="main">
-        <h2 id="portfolio-total">Portfolio: ${Number(portfolioTotal).toFixed(2)}</h2>
+        <h2 id="portfolio-total">Portfolio: ${portfolioTotal.toFixed(2)}</h2>
         {holdingsWithPrice.map((holding) => {
           let color = classes.grey;
           if (holding.change > 0) { color = classes.green; }
@@ -36,7 +36,7 @@ class Holding extends React.Component {
               <List>
                 <ListItem>
                   <ListItemText >{holding.symbol} - {holding.shares} shares</ListItemText >
-                  <ListItemText classes={{ primary: `${color}` }} >${Number(holding.price).toFixed(2)} {holding.change === 0 ? (
+                  <ListItemText classes={{ primary: `${color}` }} >${holding.price}{holding.change === 0 ? (
                     <ArrowForward />
                   ) : holding.change > 0 ? (
                     <ArrowUpward />
