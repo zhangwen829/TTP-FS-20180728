@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default class Trade extends React.Component {
+class Trade extends React.Component {
   render() {
+    const { cashBal } = this.props;
     return (
       <div className="trade-view">
-        <h3>Cash Available: $ 456.78</h3>
+        <h3>Cash Available: $ {cashBal}</h3>
         <form className="form">
           <div>
             <label htmlFor="ticker" />
@@ -19,3 +21,9 @@ export default class Trade extends React.Component {
       </div>);
   }
 }
+
+const mapStateToProps = (state) => ({
+  cashBal: state.user.cashBal,
+});
+
+export default connect(mapStateToProps, null)(Trade);

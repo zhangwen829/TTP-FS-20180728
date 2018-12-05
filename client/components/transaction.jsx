@@ -1,8 +1,8 @@
+import { Divider, List, ListItem, ListItemText } from '@material-ui/core';
 import React from 'react';
-import { List, ListItem, ListItemText, Divider } from '@material-ui/core';
-import Header from './header';
 import { connect } from 'react-redux';
 import { fetchTradesByUserId } from '../store/trade';
+import Header from './header';
 
 class Transaction extends React.Component {
   componentDidMount() {
@@ -17,7 +17,7 @@ class Transaction extends React.Component {
           <List>
             <ListItem>
               <ListItemText>{trade.tradeType}({trade.symbol})</ListItemText>
-              <ListItemText>- {trade.shares} shares @ ${trade.price}</ListItemText>
+              <ListItemText>... {trade.shares} shares @ ${trade.price}</ListItemText>
             </ListItem>
           </List>
           <Divider />

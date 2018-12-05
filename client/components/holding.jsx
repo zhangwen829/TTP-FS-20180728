@@ -1,6 +1,6 @@
-import { List, ListItem, ListItemText, Divider } from '@material-ui/core';
-import { ArrowUpward, ArrowDownward, ArrowForward } from '@material-ui/icons';
+import { Divider, List, ListItem, ListItemText } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { ArrowDownward, ArrowForward, ArrowUpward } from '@material-ui/icons';
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchHoldingsWithPriceByUserId } from '../store/holding';
@@ -35,7 +35,7 @@ class Holding extends React.Component {
             <div key={holding.symbol} className="holding-list">
               <List>
                 <ListItem>
-                  <ListItemText >{holding.symbol} - {holding.shares} shares</ListItemText >
+                  <ListItemText >{holding.symbol} ... {holding.shares} shares</ListItemText >
                   <ListItemText classes={{ primary: `${color}` }} >${holding.price}{holding.change === 0 ? (
                     <ArrowForward />
                   ) : holding.change > 0 ? (
