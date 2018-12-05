@@ -13,7 +13,7 @@ class Transaction extends React.Component {
     const { trades } = this.props;
     return (<div><Header /><div className="main"> <h2>Transaction</h2>
       {trades.map(trade => (
-        <div>
+        <div key={trade.id}>
           <List>
             <ListItem>
               <ListItemText>{trade.tradeType}({trade.symbol})</ListItemText>
