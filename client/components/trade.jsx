@@ -24,8 +24,6 @@ class Trade extends React.Component {
 
   qtyHandleChange(event) {
     const intRex = /[0-9]+/g;
-    console.log('QTY', event.target.value);
-    console.log('STATE', this.state.qty);
     if (intRex.test(event.target.value)) {
       this.setState({ qtyErr: '', qty: event.target.value });
     } else {
@@ -53,17 +51,20 @@ class Trade extends React.Component {
             onChange={this.symbolHandleChange}
             margin="normal"
             variant="outlined"
+            placeholder="type a valid ticker"
           />
           <TextField
             id="outlined-number"
             label="Qty"
             name="qty"
+            value={this.state.qty}
             onChange={this.qtyHandleChange}
             type="number"
             margin="normal"
             variant="outlined"
             error={!!this.state.qtyErr.length}
             helperText={this.state.qtyErr}
+            placeholder="positive integer of shares"
           />
           <button type="submit" className="submit-button">Buy</button>
         </form>
