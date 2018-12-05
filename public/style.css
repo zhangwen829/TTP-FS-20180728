@@ -12,10 +12,6 @@ body {
   font-size: 0.9em;
 }
 
-.main {
-  padding:10px;
-}
-
 .header {
   background-color: skyblue;
   padding:10px;
@@ -24,6 +20,12 @@ body {
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+}
+
+.main {
+  padding-top: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
 }
 
 #welcome-msg {
@@ -75,4 +77,23 @@ body {
   font-size: 16px;
   margin: 20px 2px;
   cursor: pointer;
+}
+
+.holding-list{
+  padding-right: 50px;
+  border-right: 1px solid skyblue
+}
+
+#portfolio-total{
+  padding-left: 20px;
+  padding-bottom: 30px;
+}
+
+#api-ref{
+  padding-top: 10px;
+}
+
+.trade-view {
+  padding-top:100px;
+  padding-left: 50px;
 }

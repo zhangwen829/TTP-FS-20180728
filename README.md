@@ -50,4 +50,4 @@ Data of stock are provided by [IEX](https://iextrading.com/developer/docs/#attri
 
 
 ## Author
-*Wen Zhang*    [My GitHub Link](https://github.com/zhangwen829)
+Wen Zhang

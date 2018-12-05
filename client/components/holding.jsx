@@ -1,8 +1,5 @@
-import List from '@material-ui/core/List';
-import { ListItem, ListItemText, Divider } from '@material-ui/core';
-import ArrowUpward from "@material-ui/icons/ArrowUpward";
-import ArrowDownward from "@material-ui/icons/ArrowDownward";
-import ArrowForward from "@material-ui/icons/ArrowForward";
+import { List, ListItem, ListItemText, Divider } from '@material-ui/core';
+import { ArrowUpward, ArrowDownward, ArrowForward } from '@material-ui/icons';
 import { withStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -28,14 +25,14 @@ class Holding extends React.Component {
   render() {
     const { classes, holdingsWithPrice, portfolioTotal } = this.props;
     return (
-      <div>
-        <h3>Portfolio: ${Number(portfolioTotal).toFixed(2)}</h3>
+      <div className="main">
+        <h2 id="portfolio-total">Portfolio: ${Number(portfolioTotal).toFixed(2)}</h2>
         {holdingsWithPrice.map((holding) => {
           let color = classes.grey;
           if (holding.change > 0) { color = classes.green; }
           if (holding.change < 0) { color = classes.red; }
           return (
-            <div key={holding.symbol}>
+            <div key={holding.symbol} className="holding-list">
               <List>
                 <ListItem>
                   <ListItemText >{holding.symbol} - {holding.shares} shares</ListItemText >
@@ -52,7 +49,7 @@ class Holding extends React.Component {
             </div>);
         })
         }
-        <p>* Data provided by IEX</p>
+        <p id="api-ref">* Data provided by IEX</p>
       </div>
     );
   }
