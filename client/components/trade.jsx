@@ -48,6 +48,7 @@ class Trade extends React.Component {
             name="qty"
             value={this.state.qty}
             onChange={this.handleChange}
+            type="number"
             margin="normal"
             variant="outlined"
           />
