@@ -8,18 +8,30 @@ class Trade extends React.Component {
     super();
     this.state = {
       symbol: '',
-      qty: 0
+      qty: '',
+      qtyErr: ''
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.symbolHandleChange = this.symbolHandleChange.bind(this);
+    this.qtyHandleChange = this.qtyHandleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  symbolHandleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value,
+      symbol: event.target.value
     });
-  };
+  }
 
+  qtyHandleChange(event) {
+    const intRex = /[0-9]+/g;
+    console.log('QTY', event.target.value);
+    console.log('STATE', this.state.qty);
+    if (intRex.test(event.target.value)) {
+      this.setState({ qtyErr: '', qty: event.target.value });
+    } else {
+      this.setState({ qtyErr: 'Only whole number of shares allowed!' });
+    }
+  }
   handleSubmit(evt) {
     evt.preventDefault();
     const symbol = this.state.symbol;
@@ -36,9 +48,9 @@ class Trade extends React.Component {
           <TextField
             id="outlined-name"
             label="Symbol"
-            name='symbol'
+            name="symbol"
             value={this.state.symbol}
-            onChange={this.handleChange}
+            onChange={this.symbolHandleChange}
             margin="normal"
             variant="outlined"
           />
@@ -46,11 +58,12 @@ class Trade extends React.Component {
             id="outlined-number"
             label="Qty"
             name="qty"
-            value={this.state.qty}
-            onChange={this.handleChange}
+            onChange={this.qtyHandleChange}
             type="number"
             margin="normal"
             variant="outlined"
+            error={!!this.state.qtyErr.length}
+            helperText={this.state.qtyErr}
           />
           <button type="submit" className="submit-button">Buy</button>
         </form>

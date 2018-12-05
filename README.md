@@ -11,7 +11,7 @@ These instructions will get you a copy of the project and run on your local mach
 
 * Install the dependencies: `npm install` 
 
-* Make sure to have PostgreSQL installed
+* Make sure to have PostgreSQL installed and connected
 
 * Create a database with the name "ttp", and create another database with the name "ttp-test" for test running
 
