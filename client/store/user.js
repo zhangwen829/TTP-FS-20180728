@@ -13,7 +13,12 @@ const removeUser = () => ({type: REMOVE_USER});
 
 export const me = () => dispatch =>
     axios.get('/auth/me')
-        .then(res => dispatch(getUser(res.data || defaultUser)))
+        .then(res => {
+          dispatch(getUser(res.data || defaultUser));
+          if (res.data) {
+            history.push('/portfolio');
+          }
+        })
         .catch(err => console.error(err));
 
 export const auth = (email, password, name, method) => dispatch =>
@@ -23,9 +28,7 @@ export const auth = (email, password, name, method) => dispatch =>
               dispatch(getUser(res.data));
               history.push('/portfolio');
             },
-            authError => {
-              dispatch(getUser({error: authError}));
-            })
+            authError => { dispatch(getUser({error: authError}));})
         .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr));
 
 export const logout = () => dispatch => axios.post('/auth/logout')
