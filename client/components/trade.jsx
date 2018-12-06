@@ -46,7 +46,8 @@ class Trade extends React.Component {
   }
 
   render() {
-    const { cashBal } = this.props;
+    const { cashBal, error } = this.props;
+    console.log('ERR', error);
     return (
       <div className="trade-view">
         <h3>Cash Available: $ {cashBal}</h3>
@@ -76,6 +77,7 @@ class Trade extends React.Component {
           />
           <button type="submit" className="submit-button">Buy</button>
         </form>
+        {error && error.response && <div className="err-message"> {error.response.data} </div>}
       </div>);
   }
 }
@@ -83,6 +85,7 @@ class Trade extends React.Component {
 const mapStateToProps = (state) => ({
   userId: state.user.id,
   cashBal: state.user.cashBal,
+  error: state.trades.error
 });
 
 const mapDispatch = dispatch => {

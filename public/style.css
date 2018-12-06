@@ -102,3 +102,9 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.err-message {
+  color: #d50000;
+  font-weight: bold;
+  font-size: 20px
+}
