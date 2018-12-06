@@ -23,13 +23,21 @@ class Trade extends React.Component {
   }
 
   qtyHandleChange(event) {
-    const intRex = /[0-9]+/g;
+    const intRex = /^\d+$/;
+    if (event.target.value === '') {
+      this.setState({ qtyErr: '', qty: '' });
+      return;
+    }
     if (intRex.test(event.target.value)) {
       this.setState({ qtyErr: '', qty: event.target.value });
     } else {
-      this.setState({ qtyErr: 'Only whole number of shares allowed!' });
+      this.setState({
+        qtyErr: 'Only positive integer of shares allowed!',
+        qty: this.state.qty
+      });
     }
   }
+
   handleSubmit(evt) {
     evt.preventDefault();
     const symbol = this.state.symbol;
