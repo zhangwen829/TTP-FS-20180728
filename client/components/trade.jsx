@@ -60,6 +60,7 @@ class Trade extends React.Component {
       this.setState({
         qtyErr: 'Only positive integer of shares allowed!'
       });
+      return;
     }
     this.props.buy(this.props.userId, symbol, shares);
   }
