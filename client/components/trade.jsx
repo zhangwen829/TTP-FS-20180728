@@ -1,7 +1,7 @@
 import { TextField } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
-import { buy } from '../store/trade';
+import { buy, fetchAllValidSymbols } from '../store/trade';
 
 class Trade extends React.Component {
   constructor() {
@@ -9,6 +9,7 @@ class Trade extends React.Component {
     this.state = {
       symbol: '',
       qty: '',
+      symbolErr: '',
       qtyErr: ''
     };
     this.symbolHandleChange = this.symbolHandleChange.bind(this);
@@ -16,9 +17,14 @@ class Trade extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.fetchAllValidSymbols();
+  }
+
   symbolHandleChange(event) {
     this.setState({
-      symbol: event.target.value
+      symbol: event.target.value,
+      symbolErr: ''
     });
   }
 
@@ -41,7 +47,20 @@ class Trade extends React.Component {
   handleSubmit(evt) {
     evt.preventDefault();
     const symbol = this.state.symbol;
+    const { validSymbolSet } = this.props;
+    if (!validSymbolSet.has(symbol)) {
+      this.setState({
+        symbolErr: 'Ticker Symbol Not Valid!',
+        symbol: this.state.symbol
+      });
+      return;
+    }
     const shares = Number(this.state.qty);
+    if (shares <= 0) {
+      this.setState({
+        qtyErr: 'Only positive integer of shares allowed!'
+      });
+    }
     this.props.buy(this.props.userId, symbol, shares);
   }
 
@@ -60,6 +79,8 @@ class Trade extends React.Component {
             onChange={this.symbolHandleChange}
             margin="normal"
             variant="outlined"
+            error={!!this.state.symbolErr.length}
+            helperText={this.state.symbolErr}
             placeholder="type a valid ticker"
           />
           <TextField
@@ -85,11 +106,13 @@ class Trade extends React.Component {
 const mapStateToProps = (state) => ({
   userId: state.user.id,
   cashBal: state.user.cashBal,
-  error: state.trades.error
+  error: state.trades.error,
+  validSymbolSet: state.trades.validSymbolSet
 });
 
 const mapDispatch = dispatch => {
   return {
+    fetchAllValidSymbols: () => dispatch(fetchAllValidSymbols()),
     buy: (userId, symbol, shares) => dispatch(buy(userId, symbol, shares))
   };
 };
