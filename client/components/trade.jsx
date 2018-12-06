@@ -69,7 +69,7 @@ class Trade extends React.Component {
     console.log('ERR', error);
     return (
       <div className="trade-view">
-        <h3>Cash Available: $ {cashBal}</h3>
+        <h3>Cash Available: $ {cashBal.toFixed(2)}</h3>
         <form onSubmit={this.handleSubmit} className="trade-form">
           <TextField
             id="outlined-name"
