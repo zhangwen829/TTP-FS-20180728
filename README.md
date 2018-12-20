@@ -41,7 +41,7 @@ https://ttp-zw.herokuapp.com
 
 ## Screenshot
 
-![Screenshot](/public/screenshot.png?raw=true "Screenshot")
+![Screenshot](/public/trade.png?raw=true "trade")
 
 
 ## Technologies
