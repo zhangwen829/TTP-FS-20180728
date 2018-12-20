@@ -1,5 +1,4 @@
-## Introduction
-
+## Wenguard: Web app for a mock stock trading platform
 It's a project for NYC Tech Talent Pipeline Web Application Build.
 
 
@@ -36,6 +35,11 @@ https://ttp-zw.herokuapp.com
 *Please allow 20 seconds for server to boot*
 
 *Use the email "wen@email.com" and password "12345" if you want to explore the site without registeration.*
+
+
+## Screenshot
+
+![Screenshot](/public/screenshot.png?raw=true "Screenshot")
 
 
 ## Technologies
