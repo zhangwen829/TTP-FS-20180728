@@ -1,4 +1,5 @@
-## Wenguard: Web app for a mock stock trading platform
+## Wenguard
+Wenguard is a Web app for mock stock trading.
 It's a project for NYC Tech Talent Pipeline Web Application Build.
 
 
